@@ -1,0 +1,96 @@
+---
+title: "Overview"
+output:
+  html_document:
+    code_folding: hide
+    theme: "lumen"
+---
+
+```{r SetUp, tidy=TRUE, results='hide', warning=FALSE, message=FALSE, echo=FALSE}
+setwd("C:/Users/Sarah/Dropbox/Fitness/SummerPain")
+options(stringsAsFactors=FALSE)
+
+library(chron)
+library(plyr)
+library(knitr)
+library(ggplot2)
+library(scales)
+library(reshape)
+library(car)
+```
+
+```{r Data, tidy=TRUE, results='hide'}
+# read in data
+data <- read.table("Week1.csv", header=TRUE, sep=",", na.strings=c("NA", "--", ""))
+
+# convert time/date objects
+data$Start <- as.POSIXct(data$Start, format="%a, %d %B %Y %H:%M")
+data$Time <- times(data$Time)
+
+# remove morning exercise
+dataf <- data[!data$Type=="Other", ]
+
+# convert exercise type to factor and reorder for plotting
+a <- recode(as.numeric(as.factor(dataf$Type)), "1=1; 2=5; 3=2; 4=3; 5=4")
+dataf$Types <- reorder(dataf$Type, a)
+
+# first look
+summary(data)
+dataf
+```
+
+I'm tracking my workouts and other "fitness" stats with Garmin's [vivosmart HR+](https://buy.garmin.com/en-GB/GB/p/548743), so I have some data to play with in this project. They include activity names and types, starting times of course, as well as distance, time (duration), heart rate and calorie burn data. I also added daily overview data manually to what I could download from Garmin.
+
+While the weekly posts will discuss my activities in a bit more detail, the purpose of this page is to collect and visualise all data for a general, visual overview of my (new) exercise habits.
+
+### Workout duration
+
+```{r PlotTime, tidy=TRUE, warning=FALSE}
+# extract day from activity start
+dataf$Day <- as.Date(dataf$Start)
+
+# ignore daily data for plotting
+datas <- subset(dataf, !Type=="Daily")
+
+p1 <- ggplot(datas, aes(x=Day, y=Time, fill=Type)) +
+  geom_bar(stat="identity", colour="black") + scale_fill_brewer(palette="Set1")
+p1 <- p1 + scale_y_chron(labels=date_format("%Hh %Mm %Ss"))
+p1 <- p1 + theme_classic() + scale_x_date(date_breaks="1 day", date_labels="%B %d")
+p1
+```
+
+### Heart rate data
+
+```{r PlotHR, tidy=TRUE, warning=FALSE}
+# melt HR data
+HRdata <- melt(dataf, id.vars=c("Activity", "Types", "Day"),
+               measure.vars=c("Avg.HR", "Max.HR", "Resting.HR"))
+
+# group by week
+HRdata$Week <- format(HRdata$Day, format="%W")
+
+p2 <- ggplot(data=HRdata, aes(x=factor(Week), y=value, colour=variable)) +
+  geom_boxplot() + scale_colour_manual(values=c("#377EB8", "#E41A1C", "#4DAF4A"))
+p2 <- p2 + facet_wrap(~factor(Types), nrow=3)
+p2 <- p2 + theme_bw() + labs(y="Heart Rate (bpm)", x="Week")
+p2
+```
+
+### Calorie burn
+
+```{r PlotCalories, tidy=TRUE}
+#reorder types for this plo
+b <- recode(as.numeric(as.factor(dataf$Types)), "1=2; 2=3; 3=4; 4=5; 5=1")
+dataf$Types <- reorder(dataf$Type, b)
+
+p3 <- ggplot(dataf, aes(x=Day, y=Calories, fill=Types)) +
+  geom_bar(stat="identity") + scale_fill_brewer()
+p3 <- p3 + theme_classic() + scale_x_date(date_breaks="1 day", date_labels="%B %d")
+p3
+```
+
+### Summary
+
+**6/100** workouts done.
+
+[#SummerPain on twitter](https://twitter.com/i/moments/867351430079840256)

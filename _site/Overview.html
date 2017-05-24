@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Overview</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/lumen.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 54px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+
+.section h2 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h3 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h4 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h5 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h6 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Summer Pain</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Overview.html">Overview</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Weeks
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="WeekOne.html">Week One</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/LilithElina/SummerPain">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="http://lilithelina.tumblr.com/">
+    <span class="fa fa-tumblr"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/LilithElina">
+    <span class="fa fa-twitter"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://about.me/lilithelina">
+    <span class="ion ion-information-circled"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Overview</h1>
+
+</div>
+
+
+<pre class="r"><code># read in data
+data &lt;- read.table(&quot;Week1.csv&quot;, header = TRUE, sep = &quot;,&quot;, na.strings = c(&quot;NA&quot;, 
+    &quot;--&quot;, &quot;&quot;))
+
+# convert time/date objects
+data$Start &lt;- as.POSIXct(data$Start, format = &quot;%a, %d %B %Y %H:%M&quot;)
+data$Time &lt;- times(data$Time)
+
+# remove morning exercise
+dataf &lt;- data[!data$Type == &quot;Other&quot;, ]
+
+# convert exercise type to factor and reorder for plotting
+a &lt;- recode(as.numeric(as.factor(dataf$Type)), &quot;1=1; 2=5; 3=2; 4=3; 5=4&quot;)
+dataf$Types &lt;- reorder(dataf$Type, a)
+
+# first look
+summary(data)
+dataf</code></pre>
+<p>I’m tracking my workouts and other “fitness” stats with Garmin’s <a href="https://buy.garmin.com/en-GB/GB/p/548743">vivosmart HR+</a>, so I have some data to play with in this project. They include activity names and types, starting times of course, as well as distance, time (duration), heart rate and calorie burn data. I also added daily overview data manually to what I could download from Garmin.</p>
+<p>While the weekly posts will discuss my activities in a bit more detail, the purpose of this page is to collect and visualise all data for a general, visual overview of my (new) exercise habits.</p>
+<div id="workout-duration" class="section level3">
+<h3>Workout duration</h3>
+<pre class="r"><code># extract day from activity start
+dataf$Day &lt;- as.Date(dataf$Start)
+
+# ignore daily data for plotting
+datas &lt;- subset(dataf, !Type == &quot;Daily&quot;)
+
+p1 &lt;- ggplot(datas, aes(x = Day, y = Time, fill = Type)) + geom_bar(stat = &quot;identity&quot;, 
+    colour = &quot;black&quot;) + scale_fill_brewer(palette = &quot;Set1&quot;)
+p1 &lt;- p1 + scale_y_chron(labels = date_format(&quot;%Hh %Mm %Ss&quot;))
+p1 &lt;- p1 + theme_classic() + scale_x_date(date_breaks = &quot;1 day&quot;, date_labels = &quot;%B %d&quot;)
+p1</code></pre>
+<p><img src="Overview_files/figure-html/PlotTime-1.png" width="672" /></p>
+</div>
+<div id="heart-rate-data" class="section level3">
+<h3>Heart rate data</h3>
+<pre class="r"><code># melt HR data
+HRdata &lt;- melt(dataf, id.vars = c(&quot;Activity&quot;, &quot;Types&quot;, &quot;Day&quot;), measure.vars = c(&quot;Avg.HR&quot;, 
+    &quot;Max.HR&quot;, &quot;Resting.HR&quot;))
+
+# group by week
+HRdata$Week &lt;- format(HRdata$Day, format = &quot;%W&quot;)
+
+p2 &lt;- ggplot(data = HRdata, aes(x = factor(Week), y = value, colour = variable)) + 
+    geom_boxplot() + scale_colour_manual(values = c(&quot;#377EB8&quot;, &quot;#E41A1C&quot;, &quot;#4DAF4A&quot;))
+p2 &lt;- p2 + facet_wrap(~factor(Types), nrow = 3)
+p2 &lt;- p2 + theme_bw() + labs(y = &quot;Heart Rate (bpm)&quot;, x = &quot;Week&quot;)
+p2</code></pre>
+<p><img src="Overview_files/figure-html/PlotHR-1.png" width="672" /></p>
+</div>
+<div id="calorie-burn" class="section level3">
+<h3>Calorie burn</h3>
+<pre class="r"><code># reorder types for this plo
+b &lt;- recode(as.numeric(as.factor(dataf$Types)), &quot;1=2; 2=3; 3=4; 4=5; 5=1&quot;)
+dataf$Types &lt;- reorder(dataf$Type, b)
+
+p3 &lt;- ggplot(dataf, aes(x = Day, y = Calories, fill = Types)) + geom_bar(stat = &quot;identity&quot;) + 
+    scale_fill_brewer()
+p3 &lt;- p3 + theme_classic() + scale_x_date(date_breaks = &quot;1 day&quot;, date_labels = &quot;%B %d&quot;)
+p3</code></pre>
+<p><img src="Overview_files/figure-html/PlotCalories-1.png" width="672" /></p>
+</div>
+<div id="summary" class="section level3">
+<h3>Summary</h3>
+<p><strong>6/100</strong> workouts done.</p>
+<p><a href="https://twitter.com/i/moments/867351430079840256">#SummerPain on twitter</a></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

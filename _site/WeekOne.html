@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Week one</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/lumen.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 54px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+
+.section h2 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h3 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h4 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h5 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h6 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Summer Pain</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Overview.html">Overview</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Weeks
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="WeekOne.html">Week One</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/LilithElina/SummerPain">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="http://lilithelina.tumblr.com/">
+    <span class="fa fa-tumblr"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/LilithElina">
+    <span class="fa fa-twitter"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://about.me/lilithelina">
+    <span class="ion ion-information-circled"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Week one</h1>
+
+</div>
+
+
+<pre class="r"><code># read in data
+data &lt;- read.table(&quot;Week1.csv&quot;, header = TRUE, sep = &quot;,&quot;, na.strings = c(&quot;NA&quot;, 
+    &quot;--&quot;, &quot;&quot;))
+
+# convert time/date objects
+data$Start &lt;- as.POSIXct(data$Start, format = &quot;%a, %d %B %Y %H:%M&quot;)
+data$Time &lt;- times(data$Time)
+
+# remove morning exercise
+dataf &lt;- data[!data$Type == &quot;Other&quot;, ]
+
+# convert exercise type to factor and reorder for plotting
+a &lt;- recode(as.numeric(as.factor(dataf$Type)), &quot;1=1; 2=5; 3=2; 4=3; 5=4&quot;)
+dataf$Types &lt;- reorder(dataf$Type, a)
+
+# first look
+summary(data)
+dataf</code></pre>
+<p>My week one data contains activities I tracked from last Sunday (May 14) to Saturday (May 20), sorted into different types (cycling, running, etc.) together with relevant data, as well as some overall statistics for each day. Here is a table showing how much time I spent with each activity:</p>
+<pre class="r"><code>kable(ddply(dataf, .(Type), summarise, duration = sum(Time)), format = &quot;html&quot;, 
+    table.attr = &quot;style=&#39;width:20%;&#39;&quot;)</code></pre>
+<table style="width:20%;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Type
+</th>
+<th style="text-align:right;">
+duration
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Cycling
+</td>
+<td style="text-align:right;">
+01:22:56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Daily
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Running
+</td>
+<td style="text-align:right;">
+00:59:57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Strength Training
+</td>
+<td style="text-align:right;">
+00:35:01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Yoga
+</td>
+<td style="text-align:right;">
+00:30:00
+</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>I spent a lot of workout time cycling, but I have to admit that I don’t actually cycle for exercise, but rather to get from A to B. Since the weather was good and we’re currently having some days off, we used our bikes for all kinds of errands… My legs were sore afterwards, though, so it’s still a workout, right?</p>
+<div id="workout-duration" class="section level3">
+<h3>Workout duration</h3>
+<p>Since workout duration is important for <a href="https://twitter.com/search?f=tweets&amp;vertical=default&amp;q=%23summerpain&amp;src=typd">#SummerPain</a>, a bar chart could be helpful to check on which days I exercised “enough”.</p>
+<pre class="r"><code># extract day from activity start
+dataf$Day &lt;- as.Date(dataf$Start)
+
+# ignore daily data for plotting
+datas &lt;- subset(dataf, !Type == &quot;Daily&quot;)
+
+p1 &lt;- ggplot(datas, aes(x = Day, y = Time, fill = Type)) + geom_bar(stat = &quot;identity&quot;, 
+    colour = &quot;black&quot;) + scale_fill_brewer(palette = &quot;Set1&quot;)
+p1 &lt;- p1 + scale_y_chron(labels = date_format(&quot;%Hh %Mm %Ss&quot;))
+p1 &lt;- p1 + theme_classic() + scale_x_date(date_breaks = &quot;1 day&quot;, date_labels = &quot;%B %d&quot;)
+p1</code></pre>
+<p><img src="WeekOne_files/figure-html/PlotTime-1.png" width="672" /></p>
+<p>On the first day, we were cycling to run errands and get dinner, so I tracked two separate instances, almost adding up to 30 minutes of cardio that day. With my lack of previous exercise, this was already quite enough.<br />
+The running workout on May 15th lasted for almost 30 minutes (29:50 min), because I’ve become “too fast” on our usual route. Since we’re going to move in a month and have to find a totally new route then, I’m not willing to change the routine now, though. However long the run takes, it’s one cardio workout.<br />
+May 16th was a strength day with additional cycling to run more errands - one strength workout completed.<br />
+Since I’m using yoga for flexibility training and stretching (as opposed to cardio or strength) the two cycling blocks will have to be enough to count for another workout on May 17th.<br />
+Running on May 18th was slow and painful - at least that means I was out “long enough” (30:07 min). ;-)<br />
+May 19th was a bit more than 15 minutes strength training again, and May 20th was an impromptu rest day, where we were busy organising the move and moving some unimportant stuff.</p>
+</div>
+<div id="heart-rate-data" class="section level3">
+<h3>Heart rate data</h3>
+<p>Measuring the duration of workouts is one thing, but my Garmin data of course provides a lot more information. For example, I wonder if I should count my rather slow cycling as cardio workout (because cycling usually is for cardio) or rather as strength training (since I got sore legs). A look at my heart rate (HR) data might be helpful to answer that question, and luckily I have my average and peak heart rate for each workout at hand.</p>
+<pre class="r"><code># melt HR data
+HRdata &lt;- melt(dataf, id.vars = c(&quot;Activity&quot;, &quot;Types&quot;, &quot;Day&quot;), measure.vars = c(&quot;Avg.HR&quot;, 
+    &quot;Max.HR&quot;, &quot;Resting.HR&quot;))
+
+p2 &lt;- ggplot(data = HRdata, aes(x = Day, y = value, colour = variable)) + geom_point() + 
+    scale_colour_manual(values = c(&quot;#377EB8&quot;, &quot;#E41A1C&quot;, &quot;#4DAF4A&quot;))
+p2 &lt;- p2 + facet_wrap(~factor(Types), nrow = 3)
+p2 &lt;- p2 + theme_bw() + labs(y = &quot;Heart Rate (bpm)&quot;)
+p2</code></pre>
+<p><img src="WeekOne_files/figure-html/PlotHR-1.png" width="672" /></p>
+<p>Running definitely results in higher average and maximum heart rates compared to cycling, but cycling at least stays above the 100 bpm mark also for the average heart rate. According to that <a href="https://en.wikipedia.org/wiki/Aerobic_exercise#/media/File:Exercise_zones_Fox_and_Haskell.svg">Fox and Haskell</a> formula thing, I’m moving in the “Fitness” zone when cycling, while running pushes my heart all the way up to anaerobic or even maximum effort zones. So, if I average both workout types together I should be fine for cardio, right? :-D<br />
+Strength training gets less of a raise out of my heart rate, and yoga is of course relaxed and not exercise in any HR sense.<br />
+Just for fun I also added my daily resting heart rate (RHR) to the plot, which varied from 51 to 54 bpm that week. I think it was lower when I used a Microsoft Band 2 compared to now, but that could be due to different algorithms calculating that metric. According to some charts I found online (while I don’t know anything about this scientifically) I’m still very well off with my current RHR, so I’m happy.</p>
+</div>
+<div id="calorie-burn" class="section level3">
+<h3>Calorie burn</h3>
+<p>The third metric I definitely want to include is calorie burn, since I always think it’s interesting to know what difference exercise makes compared to a workout-free day.</p>
+<pre class="r"><code># reorder types for this plo
+b &lt;- recode(as.numeric(as.factor(dataf$Types)), &quot;1=2; 2=3; 3=4; 4=5; 5=1&quot;)
+dataf$Types &lt;- reorder(dataf$Type, b)
+
+p3 &lt;- ggplot(dataf, aes(x = Day, y = Calories, fill = Types)) + geom_bar(stat = &quot;identity&quot;) + 
+    scale_fill_brewer()
+p3 &lt;- p3 + theme_classic() + scale_x_date(date_breaks = &quot;1 day&quot;, date_labels = &quot;%B %d&quot;)
+p3</code></pre>
+<p><img src="WeekOne_files/figure-html/PlotCalories-1.png" width="672" /></p>
+<p>Not surprisingly, running burns the most calories. What does surprise me is that this doesn’t seem to have much influence over my general daily calorie burn, since there’s quite a difference between the two running days. Maybe my overall daily activity has a greater influence than actual exercise?</p>
+<pre class="r"><code># subset for only daily data
+datad &lt;- dataf[dataf$Type == &quot;Daily&quot;, ]
+
+p4 &lt;- ggplot(datad, aes(x = Day, y = Steps, colour = Calories)) + geom_point()
+p4 &lt;- p4 + theme_classic() + scale_x_date(date_breaks = &quot;1 day&quot;, date_labels = &quot;%B %d&quot;)
+p4</code></pre>
+<p><img src="WeekOne_files/figure-html/PlotSteps-1.png" width="672" /></p>
+<p>The days with the lowest calorie burn are not the days with the lowest step count. May 15th does have a lower step count than May 18th (the other running day), though. And May 20th, with no specific exercise, has the most steps, but one of the lower calorie burns.<br />
+Overall, I find it difficult to explain these differences using only exercise and step data. A deeper look into my data revealed that Garmin calculates my basal metabolic rate (BMR) new for each day. It seems to be 1698 calories on most days, but on May 15th it’s down to 1074 calories, which explains the difference despite the OK step count (in fact, I did get quite a number of “active calories” that day). There is no explanation for this difference that I can find, though.</p>
+</div>
+<div id="summary" class="section level3">
+<h3>Summary</h3>
+<p>In summary - when counting cycling as exercise - I completed six workouts in the first week of <a href="https://twitter.com/search?f=tweets&amp;vertical=default&amp;q=%23summerpain&amp;src=typd">#SummerPain</a>. This brings me up to <strong>6/100</strong> workouts as of May 20th.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

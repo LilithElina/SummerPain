@@ -1,0 +1,21 @@
+name: "SummerPain"
+navbar:
+  title: "Summer Pain"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Overview"
+      href: Overview.html
+    - text: "Weeks"
+      menu:
+        - text: "Week One"
+          href: WeekOne.html
+  right:
+    - icon: "fa-github"
+      href: https://github.com/LilithElina/SummerPain
+    - icon: "fa-tumblr"
+      href: http://lilithelina.tumblr.com/
+    - icon: "fa-twitter"
+      href: https://twitter.com/LilithElina
+    - icon: "ion-information-circled"
+      href: https://about.me/lilithelina
