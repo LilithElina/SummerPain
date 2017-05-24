@@ -21,7 +21,11 @@ library(car)
 
 ```{r Data, tidy=TRUE, results='hide'}
 # read in data
-data <- read.table("Week1.csv", header=TRUE, sep=",", na.strings=c("NA", "--", ""))
+week1 <- read.table("Week1.csv", header=TRUE, sep=",", na.strings=c("NA", "--", ""))
+week2 <- read.table("Week2.csv", header=TRUE, sep=",", na.strings=c("NA", "--", ""))
+
+# combine data
+data <- rbind(week2, week1)
 
 # convert time/date objects
 data$Start <- as.POSIXct(data$Start, format="%a, %d %B %Y %H:%M")
@@ -91,6 +95,6 @@ p3
 
 ### Summary
 
-**6/100** workouts done.
+**9/100** workouts done.
 
 [#SummerPain on twitter](https://twitter.com/i/moments/867351430079840256)

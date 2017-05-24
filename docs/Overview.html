@@ -253,8 +253,13 @@ $(document).ready(function () {
 
 
 <pre class="r"><code># read in data
-data &lt;- read.table(&quot;Week1.csv&quot;, header = TRUE, sep = &quot;,&quot;, na.strings = c(&quot;NA&quot;, 
+week1 &lt;- read.table(&quot;Week1.csv&quot;, header = TRUE, sep = &quot;,&quot;, na.strings = c(&quot;NA&quot;, 
     &quot;--&quot;, &quot;&quot;))
+week2 &lt;- read.table(&quot;Week2.csv&quot;, header = TRUE, sep = &quot;,&quot;, na.strings = c(&quot;NA&quot;, 
+    &quot;--&quot;, &quot;&quot;))
+
+# combine data
+data &lt;- rbind(week2, week1)
 
 # convert time/date objects
 data$Start &lt;- as.POSIXct(data$Start, format = &quot;%a, %d %B %Y %H:%M&quot;)
@@ -317,7 +322,7 @@ p3</code></pre>
 </div>
 <div id="summary" class="section level3">
 <h3>Summary</h3>
-<p><strong>6/100</strong> workouts done.</p>
+<p><strong>9/100</strong> workouts done.</p>
 <p><a href="https://twitter.com/i/moments/867351430079840256">#SummerPain on twitter</a></p>
 </div>
 
