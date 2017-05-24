@@ -1,4 +1,5 @@
 name: "SummerPain"
+output_dir: "docs"
 navbar:
   title: "Summer Pain"
   left:
