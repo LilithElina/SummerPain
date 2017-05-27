@@ -97,4 +97,9 @@ p3
 
 **9/100** workouts done.
 
+```{r BasicSum, tidy=TRUE}
+kable(ddply(dataf, .(Type), summarise, duration=sum(Time), calories=sum(Calories)), format="html", table.attr="style='width:30%;'")
+```
+<br>
+
 [#SummerPain on twitter](https://twitter.com/i/moments/867351430079840256)

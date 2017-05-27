@@ -323,6 +323,81 @@ p3</code></pre>
 <div id="summary" class="section level3">
 <h3>Summary</h3>
 <p><strong>9/100</strong> workouts done.</p>
+<pre class="r"><code>kable(ddply(dataf, .(Type), summarise, duration = sum(Time), calories = sum(Calories)), 
+    format = &quot;html&quot;, table.attr = &quot;style=&#39;width:30%;&#39;&quot;)</code></pre>
+<table style="width:30%;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Type
+</th>
+<th style="text-align:right;">
+duration
+</th>
+<th style="text-align:right;">
+calories
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Cycling
+</td>
+<td style="text-align:right;">
+02:43:39
+</td>
+<td style="text-align:right;">
+938
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Daily
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+22109
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Running
+</td>
+<td style="text-align:right;">
+01:29:32
+</td>
+<td style="text-align:right;">
+831
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Strength Training
+</td>
+<td style="text-align:right;">
+00:58:26
+</td>
+<td style="text-align:right;">
+258
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Yoga
+</td>
+<td style="text-align:right;">
+01:14:58
+</td>
+<td style="text-align:right;">
+183
+</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
 <p><a href="https://twitter.com/i/moments/867351430079840256">#SummerPain on twitter</a></p>
 </div>
 
