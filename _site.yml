@@ -11,6 +11,8 @@ navbar:
       menu:
         - text: "Week One"
           href: WeekOne.html
+        - text: "Week Two"
+          href: WeekTwo.html
   right:
     - icon: "fa-github"
       href: https://github.com/LilithElina/SummerPain

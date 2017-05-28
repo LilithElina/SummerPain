@@ -15,7 +15,7 @@ library(plyr)
 library(knitr)
 library(ggplot2)
 library(scales)
-library(reshape)
+library(reshape2)
 library(car)
 ```
 
@@ -98,12 +98,17 @@ Just for fun I also added my daily resting heart rate (RHR) to the plot, which v
 The third metric I definitely want to include is calorie burn, since I always think it's interesting to know what difference exercise makes compared to a workout-free day.
 
 ```{r PlotCalories, tidy=TRUE}
-#reorder types for this plo
+#reorder types for this plot
 b <- recode(as.numeric(as.factor(dataf$Types)), "1=2; 2=3; 3=4; 4=5; 5=1")
 dataf$Types <- reorder(dataf$Type, b)
 
-p3 <- ggplot(dataf, aes(x=Day, y=Calories, fill=Types)) +
-  geom_bar(stat="identity") + scale_fill_brewer()
+# sum up calories per exercise type per day
+datac <- dcast(dataf, Day ~ Types, sum, value.var="Calories")
+datacm <- melt(datac, id.vars="Day")
+colnames(datacm) <- c("Day", "Type", "Calories")
+
+p3 <- ggplot(datacm, aes(x=Day, y=Calories, fill=Type)) +
+  geom_bar(stat="identity", position="identity") + scale_fill_brewer()
 p3 <- p3 + theme_classic() + scale_x_date(date_breaks="1 day", date_labels="%B %d")
 p3
 ```

@@ -15,7 +15,7 @@ library(plyr)
 library(knitr)
 library(ggplot2)
 library(scales)
-library(reshape)
+library(reshape2)
 library(car)
 ```
 
@@ -59,7 +59,7 @@ datas <- subset(dataf, !Type=="Daily")
 p1 <- ggplot(datas, aes(x=Day, y=Time, fill=Type)) +
   geom_bar(stat="identity", colour="black") + scale_fill_brewer(palette="Set1")
 p1 <- p1 + scale_y_chron(labels=date_format("%Hh %Mm %Ss"))
-p1 <- p1 + theme_classic() + scale_x_date(date_breaks="1 day", date_labels="%B %d")
+p1 <- p1 + theme_classic()
 p1
 ```
 
@@ -84,22 +84,28 @@ p2
 
 ```{r PlotCalories, tidy=TRUE}
 #reorder types for this plo
+#reorder types for this plot
 b <- recode(as.numeric(as.factor(dataf$Types)), "1=2; 2=3; 3=4; 4=5; 5=1")
 dataf$Types <- reorder(dataf$Type, b)
 
-p3 <- ggplot(dataf, aes(x=Day, y=Calories, fill=Types)) +
-  geom_bar(stat="identity") + scale_fill_brewer()
-p3 <- p3 + theme_classic() + scale_x_date(date_breaks="1 day", date_labels="%B %d")
+# sum up calories per exercise type per day
+datac <- dcast(dataf, Day ~ Types, sum, value.var="Calories")
+datacm <- melt(datac, id.vars="Day")
+colnames(datacm) <- c("Day", "Type", "Calories")
+
+p3 <- ggplot(datacm, aes(x=Day, y=Calories, fill=Type)) +
+  geom_bar(stat="identity", position="identity") + scale_fill_brewer()
+p3 <- p3 + theme_classic()
 p3
 ```
 
 ### Summary
 
-**9/100** workouts done.
+**12/100** workouts done.
 
 ```{r BasicSum, tidy=TRUE}
 kable(ddply(dataf, .(Type), summarise, duration=sum(Time), calories=sum(Calories)), format="html", table.attr="style='width:30%;'")
 ```
 <br>
 
-[#SummerPain on twitter](https://twitter.com/i/moments/867351430079840256)
+[My #SummerPain on twitter](https://twitter.com/i/moments/867351430079840256)
