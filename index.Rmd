@@ -21,7 +21,7 @@ library(car)
 
 I'm taking a break from my [coursera](http://lilithelina.tumblr.com/BCCIUoverview) project while we prepare to move to a bigger flat and I'm generally busy settling into my role as a postdoc with new projects on top of the old. Nevertheless, a little fun with programming at home can't be wrong, [right](https://twitter.com/ThePracticalDev/status/724290052029857796)?
 
-```{r WeekendCoding, out.width="200px", fig.align='center'}
+```{r WeekendCoding, out.width="250px", fig.align='center'}
 knitr::include_graphics("weekend_coding.jpg")
 ```
 

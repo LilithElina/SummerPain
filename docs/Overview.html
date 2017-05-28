@@ -202,6 +202,9 @@ $(document).ready(function () {
     <li>
       <a href="WeekOne.html">Week One</a>
     </li>
+    <li>
+      <a href="WeekTwo.html">Week Two</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -288,9 +291,9 @@ datas &lt;- subset(dataf, !Type == &quot;Daily&quot;)
 p1 &lt;- ggplot(datas, aes(x = Day, y = Time, fill = Type)) + geom_bar(stat = &quot;identity&quot;, 
     colour = &quot;black&quot;) + scale_fill_brewer(palette = &quot;Set1&quot;)
 p1 &lt;- p1 + scale_y_chron(labels = date_format(&quot;%Hh %Mm %Ss&quot;))
-p1 &lt;- p1 + theme_classic() + scale_x_date(date_breaks = &quot;1 day&quot;, date_labels = &quot;%B %d&quot;)
+p1 &lt;- p1 + theme_classic()
 p1</code></pre>
-<p><img src="Overview_files/figure-html/PlotTime-1.png" width="672" /></p>
+<p><img src="Overview_files/figure-html/PlotTime-1.png" width="1248" /></p>
 </div>
 <div id="heart-rate-data" class="section level3">
 <h3>Heart rate data</h3>
@@ -306,23 +309,28 @@ p2 &lt;- ggplot(data = HRdata, aes(x = factor(Week), y = value, colour = variabl
 p2 &lt;- p2 + facet_wrap(~factor(Types), nrow = 3)
 p2 &lt;- p2 + theme_bw() + labs(y = &quot;Heart Rate (bpm)&quot;, x = &quot;Week&quot;)
 p2</code></pre>
-<p><img src="Overview_files/figure-html/PlotHR-1.png" width="672" /></p>
+<p><img src="Overview_files/figure-html/PlotHR-1.png" width="864" /></p>
 </div>
 <div id="calorie-burn" class="section level3">
 <h3>Calorie burn</h3>
-<pre class="r"><code># reorder types for this plo
+<pre class="r"><code># reorder types for this plo reorder types for this plot
 b &lt;- recode(as.numeric(as.factor(dataf$Types)), &quot;1=2; 2=3; 3=4; 4=5; 5=1&quot;)
 dataf$Types &lt;- reorder(dataf$Type, b)
 
-p3 &lt;- ggplot(dataf, aes(x = Day, y = Calories, fill = Types)) + geom_bar(stat = &quot;identity&quot;) + 
-    scale_fill_brewer()
-p3 &lt;- p3 + theme_classic() + scale_x_date(date_breaks = &quot;1 day&quot;, date_labels = &quot;%B %d&quot;)
+# sum up calories per exercise type per day
+datac &lt;- dcast(dataf, Day ~ Types, sum, value.var = &quot;Calories&quot;)
+datacm &lt;- melt(datac, id.vars = &quot;Day&quot;)
+colnames(datacm) &lt;- c(&quot;Day&quot;, &quot;Type&quot;, &quot;Calories&quot;)
+
+p3 &lt;- ggplot(datacm, aes(x = Day, y = Calories, fill = Type)) + geom_bar(stat = &quot;identity&quot;, 
+    position = &quot;identity&quot;) + scale_fill_brewer()
+p3 &lt;- p3 + theme_classic()
 p3</code></pre>
-<p><img src="Overview_files/figure-html/PlotCalories-1.png" width="672" /></p>
+<p><img src="Overview_files/figure-html/PlotCalories-1.png" width="1248" /></p>
 </div>
 <div id="summary" class="section level3">
 <h3>Summary</h3>
-<p><strong>9/100</strong> workouts done.</p>
+<p><strong>12/100</strong> workouts done.</p>
 <pre class="r"><code>kable(ddply(dataf, .(Type), summarise, duration = sum(Time), calories = sum(Calories)), 
     format = &quot;html&quot;, table.attr = &quot;style=&#39;width:30%;&#39;&quot;)</code></pre>
 <table style="width:30%;">
@@ -345,10 +353,10 @@ calories
 Cycling
 </td>
 <td style="text-align:right;">
-02:43:39
+04:24:40
 </td>
 <td style="text-align:right;">
-938
+1549
 </td>
 </tr>
 <tr>
@@ -359,7 +367,7 @@ Daily
 NA
 </td>
 <td style="text-align:right;">
-22109
+28727
 </td>
 </tr>
 <tr>
@@ -367,10 +375,10 @@ NA
 Running
 </td>
 <td style="text-align:right;">
-01:29:32
+01:59:12
 </td>
 <td style="text-align:right;">
-831
+1118
 </td>
 </tr>
 <tr>
@@ -389,16 +397,16 @@ Strength Training
 Yoga
 </td>
 <td style="text-align:right;">
-01:14:58
+01:29:59
 </td>
 <td style="text-align:right;">
-183
+230
 </td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<p><a href="https://twitter.com/i/moments/867351430079840256">#SummerPain on twitter</a></p>
+<p><a href="https://twitter.com/i/moments/867351430079840256">My #SummerPain on twitter</a></p>
 </div>
 
 

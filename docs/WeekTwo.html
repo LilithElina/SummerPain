@@ -11,7 +11,7 @@
 
 
 
-<title>Week one</title>
+<title>Week two</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -250,13 +250,13 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Week one</h1>
+<h1 class="title toc-ignore">Week two</h1>
 
 </div>
 
 
 <pre class="r"><code># read in data
-data &lt;- read.table(&quot;Week1.csv&quot;, header = TRUE, sep = &quot;,&quot;, na.strings = c(&quot;NA&quot;, 
+data &lt;- read.table(&quot;Week2.csv&quot;, header = TRUE, sep = &quot;,&quot;, na.strings = c(&quot;NA&quot;, 
     &quot;--&quot;, &quot;&quot;))
 
 # convert time/date objects
@@ -273,7 +273,7 @@ dataf$Types &lt;- reorder(dataf$Type, a)
 # first look
 summary(data)
 dataf</code></pre>
-<p>My week one data contains activities I tracked from last Sunday (May 14) to Saturday (May 20), sorted into different types (cycling, running, etc.) together with relevant data, as well as some overall statistics for each day. Here is a table showing how much time I spent with each activity:</p>
+<p>My week two data contains activities I tracked from May 21st to May 27th, again sorted into different types (cycling, running, etc.) together with relevant data, as well as some overall statistics for each day. Here is a table showing how much time I spent with each activity:</p>
 <pre class="r"><code>kable(ddply(dataf, .(Type), summarise, duration = sum(Time)), format = &quot;html&quot;, 
     table.attr = &quot;style=&#39;width:20%;&#39;&quot;)</code></pre>
 <table style="width:20%;">
@@ -293,7 +293,7 @@ duration
 Cycling
 </td>
 <td style="text-align:right;">
-01:22:56
+03:01:44
 </td>
 </tr>
 <tr>
@@ -309,7 +309,7 @@ NA
 Running
 </td>
 <td style="text-align:right;">
-00:59:57
+00:59:15
 </td>
 </tr>
 <tr>
@@ -317,7 +317,7 @@ Running
 Strength Training
 </td>
 <td style="text-align:right;">
-00:35:01
+00:23:25
 </td>
 </tr>
 <tr>
@@ -325,16 +325,17 @@ Strength Training
 Yoga
 </td>
 <td style="text-align:right;">
-00:30:00
+00:59:59
 </td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<p>I spent a lot of workout time cycling, but I have to admit that I don’t actually cycle for exercise, but rather to get from A to B. Since the weather was good and we’re currently having some days off, we used our bikes for all kinds of errands… My legs were sore afterwards, though, so it’s still a workout, right?</p>
+<p>I cycled a lot this week, since we were still on vacation and could do a lot with the bikes. Expect a drop in this statistic when I get back to work tomorrow…<br />
+I feel like I haven’t done enough strength training, just looking at these numbers. But then, a strength workout only has to last 15 minutes, and the way my body hurts it must have been enough. There’s always also moving stuff around, which costs strength and isn’t shown here at all.</p>
 <div id="workout-duration" class="section level3">
 <h3>Workout duration</h3>
-<p>Since workout duration is important for <a href="https://twitter.com/search?f=tweets&amp;vertical=default&amp;q=%23summerpain&amp;src=typd">#SummerPain</a>, a bar chart could be helpful to check on which days I exercised “enough”.</p>
+<p>Since workout duration is important for <a href="https://twitter.com/search?f=tweets&amp;vertical=default&amp;q=%23summerpain&amp;src=typd">#SummerPain</a>, I’m visualising it for each day with a bar chart.</p>
 <pre class="r"><code># extract day from activity start
 dataf$Day &lt;- as.Date(dataf$Start)
 
@@ -346,17 +347,18 @@ p1 &lt;- ggplot(datas, aes(x = Day, y = Time, fill = Type)) + geom_bar(stat = &q
 p1 &lt;- p1 + scale_y_chron(labels = date_format(&quot;%Hh %Mm %Ss&quot;))
 p1 &lt;- p1 + theme_classic() + scale_x_date(date_breaks = &quot;1 day&quot;, date_labels = &quot;%B %d&quot;)
 p1</code></pre>
-<p><img src="WeekOne_files/figure-html/PlotTime-1.png" width="672" /></p>
-<p>On the first day, we were cycling to run errands and get dinner, so I tracked two separate instances, almost adding up to 30 minutes of cardio that day. With my lack of previous exercise, this was already quite enough.<br />
-The running workout on May 15th lasted for almost 30 minutes (29:50 min), because I’ve become “too fast” on our usual route. Since we’re going to move in a month and have to find a totally new route then, I’m not willing to change the routine now, though. However long the run takes, it’s one cardio workout.<br />
-May 16th was a strength day with additional cycling to run more errands - one strength workout completed.<br />
-Since I’m using yoga for flexibility training and stretching (as opposed to cardio or strength) the two cycling blocks will have to be enough to count for another workout on May 17th.<br />
-Running on May 18th was slow and painful - at least that means I was out “long enough” (30:07 min). ;-)<br />
-May 19th was a bit more than 15 minutes strength training again, and May 20th was an impromptu rest day, where we were busy organising the move and moving some unimportant stuff.</p>
+<p><img src="WeekTwo_files/figure-html/PlotTime-1.png" width="672" /></p>
+<p>May 21st was a running day, and since we didn’t run early in the morning, we finished that workout with 15 minutes of “yoga for runners” to stretch.<br />
+May 22nd included a cycling trip into the city and back, which takes around 20 minutes to half an hour one way. I’m still not fully convinced I should call that cardio, since I didn’t sweat much or anything, but exercise is exercise…<br />
+May 23rd was strength training (15 minutes plus 5 minutes cardio warm-up) followed by half an hour of flexibility yoga, which was great.<br />
+On May 24th I cycled on my own, which means that I was faster - despite my taking some detours, I didn’t manage to get over the 30 min mark. On the other hand, it was definitely cardio, as you’ll see in the heart rate data.<br />
+We went running on May 25th, and again followed that with 15 minutes of stretching yoga.<br />
+May 26th was busy organising at the new flat, and since we had to bring heavy stuff we had to take the car. We built our first own <a href="https://twitter.com/LilithElina/status/868359511232348161">work bench</a> that day, but didn’t exercise.<br />
+And then there’s May 27th! :-D We cycled into the city to get inspiration for our small bathroom and had great salad for lunch (upper two blocks) before returning home (longest block). Then we cycled to our new flat to get some work done, cycled from there to a great Biergarten, and then home from there (lowest three blocks). For now, I’ll stick to counting one workout per day, but this day must be worth at least two.</p>
 </div>
 <div id="heart-rate-data" class="section level3">
 <h3>Heart rate data</h3>
-<p>Measuring the duration of workouts is one thing, but my Garmin data of course provides a lot more information. For example, I wonder if I should count my rather slow cycling as cardio workout (because cycling usually is for cardio) or rather as strength training (since I got sore legs). A look at my heart rate (HR) data might be helpful to answer that question, and luckily I have my average and peak heart rate for each workout at hand.</p>
+<p>In the <a href="Overview.html">overview</a>, I’m showing my average and maximum heart rates per workout type as box plots for the different calendar weeks, but for weekly data I’ll stick to simple data points.</p>
 <pre class="r"><code># melt HR data
 HRdata &lt;- melt(dataf, id.vars = c(&quot;Activity&quot;, &quot;Types&quot;, &quot;Day&quot;), measure.vars = c(&quot;Avg.HR&quot;, 
     &quot;Max.HR&quot;, &quot;Resting.HR&quot;))
@@ -366,14 +368,13 @@ p2 &lt;- ggplot(data = HRdata, aes(x = Day, y = value, colour = variable)) + geo
 p2 &lt;- p2 + facet_wrap(~factor(Types), nrow = 3)
 p2 &lt;- p2 + theme_bw() + labs(y = &quot;Heart Rate (bpm)&quot;)
 p2</code></pre>
-<p><img src="WeekOne_files/figure-html/PlotHR-1.png" width="672" /></p>
-<p>Running definitely results in higher average and maximum heart rates compared to cycling, but cycling at least stays above the 100 bpm mark also for the average heart rate. According to that <a href="https://en.wikipedia.org/wiki/Aerobic_exercise#/media/File:Exercise_zones_Fox_and_Haskell.svg">Fox and Haskell</a> formula thing, I’m moving in the “Fitness” zone when cycling, while running pushes my heart all the way up to anaerobic or even maximum effort zones. So, if I average both workout types together I should be fine for cardio, right? :-D<br />
-Strength training gets less of a raise out of my heart rate, and yoga is of course relaxed and not exercise in any HR sense.<br />
-Just for fun I also added my daily resting heart rate (RHR) to the plot, which varied from 51 to 54 bpm that week. I think it was lower when I used a Microsoft Band 2 compared to now, but that could be due to different algorithms calculating that metric. According to some charts I found online (while I don’t know anything about this scientifically) I’m still very well off with my current RHR, so I’m happy.</p>
+<p><img src="WeekTwo_files/figure-html/PlotHR-1.png" width="672" /></p>
+<p>As expected, my average and maximum heart rates while cycling were higher on May 24th compared to May 21st (or even May 27th) - the difference between cycling for transportation and actually trying to convert cycling into exercise. I still didn’t reach the same HR as in running, but that’s fine.<br />
+I only did one strength workout this week, something I could improve on next week. Cardio was definitely enough, and despite the three yoga sessions I did, I feel sore enough to want more of that for relaxation…</p>
 </div>
 <div id="calorie-burn" class="section level3">
 <h3>Calorie burn</h3>
-<p>The third metric I definitely want to include is calorie burn, since I always think it’s interesting to know what difference exercise makes compared to a workout-free day.</p>
+<p>The third metric I wanted to include is calorie burn, since I always think it’s interesting to know what difference exercise makes compared to a workout-free day.</p>
 <pre class="r"><code># reorder types for this plot
 b &lt;- recode(as.numeric(as.factor(dataf$Types)), &quot;1=2; 2=3; 3=4; 4=5; 5=1&quot;)
 dataf$Types &lt;- reorder(dataf$Type, b)
@@ -387,21 +388,20 @@ p3 &lt;- ggplot(datacm, aes(x = Day, y = Calories, fill = Type)) + geom_bar(stat
     position = &quot;identity&quot;) + scale_fill_brewer()
 p3 &lt;- p3 + theme_classic() + scale_x_date(date_breaks = &quot;1 day&quot;, date_labels = &quot;%B %d&quot;)
 p3</code></pre>
-<p><img src="WeekOne_files/figure-html/PlotCalories-1.png" width="672" /></p>
-<p>Not surprisingly, running burns the most calories. What does surprise me is that this doesn’t seem to have much influence over my general daily calorie burn, since there’s quite a difference between the two running days. Maybe my overall daily activity has a greater influence than actual exercise?</p>
+<p><img src="WeekTwo_files/figure-html/PlotCalories-1.png" width="672" /></p>
+<p>Not surprisingly, May 27th shows by far the highest calorie burn, while May 23rd - the day of the strength training - shows the lowest burn. Yoga burned surprisingly many calories on that day, but that’s probably due to the duration of the session. The two running days seem pretty equal, and I definitely burned more calories cycling this week than with any other exercise.</p>
 <pre class="r"><code># subset for only daily data
 datad &lt;- dataf[dataf$Type == &quot;Daily&quot;, ]
 
 p4 &lt;- ggplot(datad, aes(x = Day, y = Steps, colour = Calories)) + geom_point()
 p4 &lt;- p4 + theme_classic() + scale_x_date(date_breaks = &quot;1 day&quot;, date_labels = &quot;%B %d&quot;)
 p4</code></pre>
-<p><img src="WeekOne_files/figure-html/PlotSteps-1.png" width="672" /></p>
-<p>The days with the lowest calorie burn are not the days with the lowest step count. May 15th does have a lower step count than May 18th (the other running day), though. And May 20th, with no specific exercise, has the most steps, but one of the lower calorie burns.<br />
-Overall, I find it difficult to explain these differences using only exercise and step data. A deeper look into my data revealed that Garmin calculates my basal metabolic rate (BMR) new for each day. It seems to be 1698 calories on most days, but on May 15th it’s down to 1074 calories, which explains the difference despite the OK step count (in fact, I did get quite a number of “active calories” that day). There is no explanation for this difference that I can find, though.</p>
+<p><img src="WeekTwo_files/figure-html/PlotSteps-1.png" width="672" /></p>
+<p>This time, it’s pretty clear that my step count plays a role in my overall calorie burn on most days. May 22nd to May 24th were quite “lazy”, since I worked on this website and almost only moved for the actual workouts. Nevertheless, May 24th looks good despite the low step count - due to the cycling? That’s definitely the cause of the high calorie burn on May 27th, where I also didn’t walk much.</p>
 </div>
 <div id="summary" class="section level3">
 <h3>Summary</h3>
-<p>In summary - when counting cycling as exercise - I completed six workouts in the first week of <a href="https://twitter.com/search?f=tweets&amp;vertical=default&amp;q=%23summerpain&amp;src=typd">#SummerPain</a>. This brings me up to <strong>6/100</strong> workouts as of May 20th.</p>
+<p>In summary - when counting cycling as one workout on any given day - I again completed six workouts in the second week of <a href="https://twitter.com/search?f=tweets&amp;vertical=default&amp;q=%23summerpain&amp;src=typd">#SummerPain</a>. This brings me up to <strong>12/100</strong> workouts as of May 27th.</p>
 </div>
 
 

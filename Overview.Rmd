@@ -49,7 +49,7 @@ While the weekly posts will discuss my activities in a bit more detail, the purp
 
 ### Workout duration
 
-```{r PlotTime, tidy=TRUE, warning=FALSE}
+```{r PlotTime, tidy=TRUE, warning=FALSE, fig.width=13}
 # extract day from activity start
 dataf$Day <- as.Date(dataf$Start)
 
@@ -65,7 +65,7 @@ p1
 
 ### Heart rate data
 
-```{r PlotHR, tidy=TRUE, warning=FALSE}
+```{r PlotHR, tidy=TRUE, warning=FALSE, fig.width=9, fig.height=9}
 # melt HR data
 HRdata <- melt(dataf, id.vars=c("Activity", "Types", "Day"),
                measure.vars=c("Avg.HR", "Max.HR", "Resting.HR"))
@@ -82,7 +82,7 @@ p2
 
 ### Calorie burn
 
-```{r PlotCalories, tidy=TRUE}
+```{r PlotCalories, tidy=TRUE, fig.width=13}
 #reorder types for this plo
 #reorder types for this plot
 b <- recode(as.numeric(as.factor(dataf$Types)), "1=2; 2=3; 3=4; 4=5; 5=1")
