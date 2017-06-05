@@ -205,6 +205,9 @@ $(document).ready(function () {
     <li>
       <a href="WeekTwo.html">Week Two</a>
     </li>
+    <li>
+      <a href="WeekThree.html">Week Three</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -260,9 +263,11 @@ week1 &lt;- read.table(&quot;Week1.csv&quot;, header = TRUE, sep = &quot;,&quot;
     &quot;--&quot;, &quot;&quot;))
 week2 &lt;- read.table(&quot;Week2.csv&quot;, header = TRUE, sep = &quot;,&quot;, na.strings = c(&quot;NA&quot;, 
     &quot;--&quot;, &quot;&quot;))
+week3 &lt;- read.table(&quot;Week3.csv&quot;, header = TRUE, sep = &quot;,&quot;, na.strings = c(&quot;NA&quot;, 
+    &quot;--&quot;, &quot;&quot;))
 
 # combine data
-data &lt;- rbind(week2, week1)
+data &lt;- rbind(week3, week2, week1)
 
 # convert time/date objects
 data$Start &lt;- as.POSIXct(data$Start, format = &quot;%a, %d %B %Y %H:%M&quot;)
@@ -330,7 +335,22 @@ p3</code></pre>
 </div>
 <div id="summary" class="section level3">
 <h3>Summary</h3>
-<p><strong>12/100</strong> workouts done.</p>
+<pre class="r"><code># calculate workout count (one per day, if strength, running or cycling)
+datac$Count &lt;- ifelse(datac$Cycling &gt; 0 | datac$Running &gt; 0 | datac$`Strength Training` &gt; 
+    0, 1, 0)
+
+# x axis limits
+lims &lt;- as.Date(c(&quot;2017-05-14&quot;, &quot;2017-09-15&quot;))
+
+p4 &lt;- ggplot(datac, aes(x = Day, y = cumsum(Count))) + geom_step()
+p4 &lt;- p4 + scale_x_date(limits = lims) + ylim(c(0, 100))
+p4 &lt;- p4 + geom_hline(yintercept = 100) + geom_vline(xintercept = as.numeric(as.Date(&quot;2017-09-15&quot;)))
+p4 &lt;- p4 + geom_line(data = data.frame(x = lims, y = c(0, 100)), aes(x = x, 
+    y = y), col = &quot;grey&quot;)
+p4 &lt;- p4 + theme_classic() + labs(y = &quot;Workout Count&quot;, x = &quot;Day&quot;)
+p4</code></pre>
+<p><img src="Overview_files/figure-html/WorkoutCount-1.png" width="672" /></p>
+<p><strong>18/100</strong> workouts done, or better, I worked out on 18 days so far, out of 21 days since <a href="https://twitter.com/search?f=tweets&amp;vertical=default&amp;q=%23summerpain&amp;src=typd">#SummerPain</a> started.</p>
 <pre class="r"><code>kable(ddply(dataf, .(Type), summarise, duration = sum(Time), calories = sum(Calories)), 
     format = &quot;html&quot;, table.attr = &quot;style=&#39;width:30%;&#39;&quot;)</code></pre>
 <table style="width:30%;">
@@ -353,10 +373,10 @@ calories
 Cycling
 </td>
 <td style="text-align:right;">
-04:24:40
+06:55:34
 </td>
 <td style="text-align:right;">
-1549
+2411
 </td>
 </tr>
 <tr>
@@ -367,7 +387,7 @@ Daily
 NA
 </td>
 <td style="text-align:right;">
-28727
+43681
 </td>
 </tr>
 <tr>
@@ -375,10 +395,10 @@ NA
 Running
 </td>
 <td style="text-align:right;">
-01:59:12
+02:58:18
 </td>
 <td style="text-align:right;">
-1118
+1669
 </td>
 </tr>
 <tr>
@@ -386,10 +406,10 @@ Running
 Strength Training
 </td>
 <td style="text-align:right;">
-00:58:26
+01:39:33
 </td>
 <td style="text-align:right;">
-258
+434
 </td>
 </tr>
 <tr>
@@ -397,10 +417,10 @@ Strength Training
 Yoga
 </td>
 <td style="text-align:right;">
-01:29:59
+02:10:50
 </td>
 <td style="text-align:right;">
-230
+316
 </td>
 </tr>
 </tbody>

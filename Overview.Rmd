@@ -23,9 +23,10 @@ library(car)
 # read in data
 week1 <- read.table("Week1.csv", header=TRUE, sep=",", na.strings=c("NA", "--", ""))
 week2 <- read.table("Week2.csv", header=TRUE, sep=",", na.strings=c("NA", "--", ""))
+week3 <- read.table("Week3.csv", header=TRUE, sep=",", na.strings=c("NA", "--", ""))
 
 # combine data
-data <- rbind(week2, week1)
+data <- rbind(week3, week2, week1)
 
 # convert time/date objects
 data$Start <- as.POSIXct(data$Start, format="%a, %d %B %Y %H:%M")
@@ -101,7 +102,22 @@ p3
 
 ### Summary
 
-**12/100** workouts done.
+```{r WorkoutCount, tidy=TRUE}
+# calculate workout count (one per day, if strength, running or cycling)
+datac$Count <- ifelse(datac$Cycling>0 | datac$Running>0 | datac$`Strength Training`>0, 1, 0)
+
+# x axis limits
+lims <- as.Date(c("2017-05-14", "2017-09-15"))
+
+p4  <- ggplot(datac, aes(x=Day, y=cumsum(Count))) + geom_step()
+p4 <- p4 + scale_x_date(limits=lims) + ylim(c(0,100))
+p4 <- p4 + geom_hline(yintercept=100) + geom_vline(xintercept=as.numeric(as.Date("2017-09-15")))
+p4 <- p4 + geom_line(data=data.frame(x=lims, y=c(0,100)), aes(x=x, y=y), col="grey")
+p4 <- p4 + theme_classic() + labs(y="Workout Count", x="Day")
+p4
+```
+
+**`r sum(datac$Count)`/100** workouts done, or better, I worked out on `r sum(datac$Count)` days so far, out of `r nrow(datac)` days since [#SummerPain](https://twitter.com/search?f=tweets&vertical=default&q=%23summerpain&src=typd) started.
 
 ```{r BasicSum, tidy=TRUE}
 kable(ddply(dataf, .(Type), summarise, duration=sum(Time), calories=sum(Calories)), format="html", table.attr="style='width:30%;'")
