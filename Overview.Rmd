@@ -24,9 +24,10 @@ library(car)
 week1 <- read.table("Week1.csv", header=TRUE, sep=",", na.strings=c("NA", "--", ""))
 week2 <- read.table("Week2.csv", header=TRUE, sep=",", na.strings=c("NA", "--", ""))
 week3 <- read.table("Week3.csv", header=TRUE, sep=",", na.strings=c("NA", "--", ""))
+week4 <- read.table("Week4.csv", header=TRUE, sep=",", na.strings=c("NA", "--", ""))
 
 # combine data
-data <- rbind(week3, week2, week1)
+data <- rbind(week4, week3, week2, week1)
 
 # convert time/date objects
 data$Start <- as.POSIXct(data$Start, format="%a, %d %B %Y %H:%M")

@@ -265,9 +265,11 @@ week2 &lt;- read.table(&quot;Week2.csv&quot;, header = TRUE, sep = &quot;,&quot;
     &quot;--&quot;, &quot;&quot;))
 week3 &lt;- read.table(&quot;Week3.csv&quot;, header = TRUE, sep = &quot;,&quot;, na.strings = c(&quot;NA&quot;, 
     &quot;--&quot;, &quot;&quot;))
+week4 &lt;- read.table(&quot;Week4.csv&quot;, header = TRUE, sep = &quot;,&quot;, na.strings = c(&quot;NA&quot;, 
+    &quot;--&quot;, &quot;&quot;))
 
 # combine data
-data &lt;- rbind(week3, week2, week1)
+data &lt;- rbind(week4, week3, week2, week1)
 
 # convert time/date objects
 data$Start &lt;- as.POSIXct(data$Start, format = &quot;%a, %d %B %Y %H:%M&quot;)
@@ -350,7 +352,7 @@ p4 &lt;- p4 + geom_line(data = data.frame(x = lims, y = c(0, 100)), aes(x = x,
 p4 &lt;- p4 + theme_classic() + labs(y = &quot;Workout Count&quot;, x = &quot;Day&quot;)
 p4</code></pre>
 <p><img src="Overview_files/figure-html/WorkoutCount-1.png" width="672" /></p>
-<p><strong>18/100</strong> workouts done, or better, I worked out on 18 days so far, out of 21 days since <a href="https://twitter.com/search?f=tweets&amp;vertical=default&amp;q=%23summerpain&amp;src=typd">#SummerPain</a> started.</p>
+<p><strong>24/100</strong> workouts done, or better, I worked out on 24 days so far, out of 28 days since <a href="https://twitter.com/search?f=tweets&amp;vertical=default&amp;q=%23summerpain&amp;src=typd">#SummerPain</a> started.</p>
 <pre class="r"><code>kable(ddply(dataf, .(Type), summarise, duration = sum(Time), calories = sum(Calories)), 
     format = &quot;html&quot;, table.attr = &quot;style=&#39;width:30%;&#39;&quot;)</code></pre>
 <table style="width:30%;">
@@ -373,10 +375,10 @@ calories
 Cycling
 </td>
 <td style="text-align:right;">
-06:55:34
+07:13:25
 </td>
 <td style="text-align:right;">
-2411
+2535
 </td>
 </tr>
 <tr>
@@ -387,7 +389,7 @@ Daily
 NA
 </td>
 <td style="text-align:right;">
-43681
+58218
 </td>
 </tr>
 <tr>
@@ -395,10 +397,10 @@ NA
 Running
 </td>
 <td style="text-align:right;">
-02:58:18
+04:07:51
 </td>
 <td style="text-align:right;">
-1669
+2277
 </td>
 </tr>
 <tr>
@@ -406,10 +408,10 @@ Running
 Strength Training
 </td>
 <td style="text-align:right;">
-01:39:33
+02:20:47
 </td>
 <td style="text-align:right;">
-434
+611
 </td>
 </tr>
 <tr>
@@ -417,10 +419,10 @@ Strength Training
 Yoga
 </td>
 <td style="text-align:right;">
-02:10:50
+02:40:46
 </td>
 <td style="text-align:right;">
-316
+372
 </td>
 </tr>
 </tbody>
